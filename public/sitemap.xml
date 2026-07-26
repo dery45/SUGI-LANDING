@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://sugi-landing.netlify.app/</loc><priority>1.0</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/tentang-kami</loc><priority>0.8</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/masalah</loc><priority>0.8</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/solusi</loc><priority>0.8</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/visi-misi</loc><priority>0.7</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/ekosistem</loc><priority>0.8</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/fitur</loc><priority>0.7</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/teknologi-ai</loc><priority>0.8</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/tim</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/kontak</loc><priority>0.7</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/faq</loc><priority>0.7</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk</loc><priority>0.7</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/chatbot-telegram</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/solusi-petani</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/solusi-pemerintah</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/dashboard-petani</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/dashboard-pemerintah</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/market-intelligence</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/rekomendasi-kebijakan</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/chatbot-insight</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/daily-insight</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/ai-copilot</loc><priority>0.6</priority></url>
+  <url><loc>https://sugi-landing.netlify.app/produk/arsitektur-ai</loc><priority>0.6</priority></url>
+</urlset>

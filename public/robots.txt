@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sugi-landing.netlify.app/sitemap.xml
