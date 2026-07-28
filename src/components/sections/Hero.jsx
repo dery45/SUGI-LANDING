@@ -55,8 +55,8 @@ export default function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button href="https://t.me/sugi_demo_llmbot">{cta1}</Button>
-            <Button variant="secondary">{cta2}</Button>
+            <Button to="/untuk-petani">{cta1}</Button>
+            <Button variant="secondary" to="/untuk-pemerintah">{cta2}</Button>
           </div>
         </div>
 

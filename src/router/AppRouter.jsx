@@ -7,6 +7,8 @@ import ScrollProgressIndicator from '../components/ui/ScrollProgressIndicator'
 import PageTransitionWrapper from '../components/ui/PageTransitionWrapper'
 
 import Home from '../pages/Home'
+import GovernmentPage from '../pages/GovernmentPage'
+import FarmerPage from '../pages/FarmerPage'
 import VisionMission from '../pages/VisionMission'
 import AITechnology from '../pages/AITechnology'
 import NotFound from '../pages/NotFound'
@@ -51,6 +53,8 @@ export default function AppRouter() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
+            <Route path="/untuk-pemerintah" element={<AnimatedPage><GovernmentPage /></AnimatedPage>} />
+            <Route path="/untuk-petani" element={<AnimatedPage><FarmerPage /></AnimatedPage>} />
             <Route path="/visi-misi" element={<AnimatedPage><VisionMission /></AnimatedPage>} />
             <Route path="/teknologi-ai" element={<AnimatedPage><AITechnology /></AnimatedPage>} />
 

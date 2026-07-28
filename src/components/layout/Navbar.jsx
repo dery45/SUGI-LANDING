@@ -3,14 +3,10 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../../contexts/LanguageContext'
 import Container from '../ui/Container'
 
-const sectionLinks = [
-  { key: 'beranda', path: '/', isHash: false },
-  { key: 'masalah', path: 'masalah', isHash: true },
-  { key: 'solusi', path: 'solusi', isHash: true },
-  { key: 'ekosistem', path: 'ekosistem', isHash: true },
-  { key: 'tim', path: 'tim', isHash: true },
-  { key: 'faq', path: 'faq', isHash: true },
-  { key: 'kontak', path: 'kontak', isHash: true },
+const navLinks = [
+  { key: 'beranda', path: '/' },
+  { key: 'untuk-petani', path: '/untuk-petani' },
+  { key: 'untuk-pemerintah', path: '/untuk-pemerintah' },
 ]
 
 export default function Navbar() {
@@ -58,15 +54,15 @@ export default function Navbar() {
   const t = (key) => {
     const content = {
       id: {
-        beranda: 'Beranda', masalah: 'Masalah',
-        solusi: 'Solusi', ekosistem: 'Ekosistem',
-        tim: 'Tim', faq: 'FAQ', kontak: 'Kontak',
+        beranda: 'Beranda',
+        'untuk-petani': 'Untuk Petani',
+        'untuk-pemerintah': 'Untuk Pemerintah',
         id: 'ID', en: 'EN',
       },
       en: {
-        beranda: 'Home', masalah: 'Problem',
-        solusi: 'Solution', ekosistem: 'Ecosystem',
-        tim: 'Team', faq: 'FAQ', kontak: 'Contact',
+        beranda: 'Home',
+        'untuk-petani': 'For Farmers',
+        'untuk-pemerintah': 'For Government',
         id: 'ID', en: 'EN',
       },
     }
@@ -89,33 +85,20 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden lg:flex items-center gap-6">
-            {sectionLinks.map(link =>
-              link.isHash ? (
-                <a
-                  key={link.key}
-                  href={`/#${link.path}`}
-                  onClick={(e) => handleNavClick(e, link)}
-                  className={`text-sm font-medium transition-colors duration-200 ${
-                    isActiveHash(link) ? 'text-primary' : linkTextColor
-                  } hover:text-primary`}
-                >
-                  {t(link.key)}
-                </a>
-              ) : (
-                <NavLink
-                  key={link.key}
-                  to={link.path}
-                  className={({ isActive }) =>
-                    `text-sm font-medium transition-colors duration-200 ${
-                      (!hasSection && isActive) ? 'text-primary' : linkTextColor
-                    } hover:text-primary`
-                  }
-                  end
-                >
-                  {t(link.key)}
-                </NavLink>
-              )
-            )}
+            {navLinks.map(link => (
+              <NavLink
+                key={link.key}
+                to={link.path}
+                className={({ isActive }) =>
+                  `text-sm font-medium transition-colors duration-200 ${
+                    isActive ? 'text-primary' : linkTextColor
+                  } hover:text-primary`
+                }
+                end
+              >
+                {t(link.key)}
+              </NavLink>
+            ))}
             <button
               onClick={toggleLang}
               className={`ml-2 px-3 py-1 text-xs font-bold rounded-lg border transition-all ${
@@ -145,36 +128,21 @@ export default function Navbar() {
         <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg max-h-[80vh] overflow-y-auto" role="navigation" aria-label="Menu navigasi mobile">
           <Container>
             <div className="py-4 space-y-1">
-              {sectionLinks.map(link =>
-                link.isHash ? (
-                  <a
-                    key={link.key}
-                    href={`/#${link.path}`}
-                    onClick={(e) => {
-                      handleNavClick(e, link)
-                      setMobileOpen(false)
-                    }}
-                    className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                      isActiveHash(link) ? 'bg-primary/10 text-primary' : 'text-shade-600 hover:bg-gray-50'
-                    }`}
-                  >
-                    {t(link.key)}
-                  </a>
-                ) : (
-                  <NavLink
-                    key={link.key}
-                    to={link.path}
-                    className={({ isActive }) =>
-                      `block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                        (!hasSection && isActive) ? 'bg-primary/10 text-primary' : 'text-shade-600 hover:bg-gray-50'
-                      }`
-                    }
-                    end
-                  >
-                    {t(link.key)}
-                  </NavLink>
-                )
-              )}
+              {navLinks.map(link => (
+                <NavLink
+                  key={link.key}
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                      isActive ? 'bg-primary/10 text-primary' : 'text-shade-600 hover:bg-gray-50'
+                    }`
+                  }
+                  end
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t(link.key)}
+                </NavLink>
+              ))}
               <button
                 onClick={toggleLang}
                 className="w-full mt-2 px-4 py-3 text-sm font-bold text-center rounded-lg border border-shade-300 text-shade-500 hover:bg-shade-50"
