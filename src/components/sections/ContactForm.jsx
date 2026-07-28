@@ -16,7 +16,11 @@ export default function ContactForm() {
       e.preventDefault()
       const form = e.target
       const data = new FormData(form)
-      fetch('/', { method: 'POST', body: data, headers: { 'Accept': 'application/xml' } })
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      })
         .then(() => setSubmitted(true))
         .catch(() => setSubmitted(true))
       setTimeout(() => setSubmitted(false), 5000)
