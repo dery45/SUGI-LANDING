@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
+import emailjs from '@emailjs/browser'
 import Button from '../ui/Button'
 
 export default function ContactForm() {
@@ -11,20 +12,32 @@ export default function ContactForm() {
     ? { name: 'Nama Lengkap', email: 'Email', message: 'Pesan', submit: 'Kirim Pesan', success: 'Pesan berhasil dikirim! Kami akan menghubungi Anda segera.' }
     : { name: 'Full Name', email: 'Email', message: 'Message', submit: 'Send Message', success: 'Message sent successfully! We\'ll get back to you soon.' }
 
-  return (
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={(e) => {
-      e.preventDefault()
-      const form = e.target
-      const data = new FormData(form)
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = e.target
+    const data = new FormData(form)
+
+    Promise.all([
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(data).toString()
-      })
-        .then(() => setSubmitted(true))
-        .catch(() => setSubmitted(true))
-      setTimeout(() => setSubmitted(false), 5000)
-    }}>
+      }),
+      emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+    ])
+      .then(() => setSubmitted(true))
+      .catch(() => setSubmitted(true))
+
+    setTimeout(() => setSubmitted(false), 5000)
+  }
+
+  return (
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>
       <input type="hidden" name="form-name" value="contact" />
       <p className="hidden"><label><input name="bot-field" /></label></p>
 
