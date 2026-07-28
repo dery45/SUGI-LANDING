@@ -31,7 +31,7 @@ export const faqData = [
       },
       {
         q: { id: 'Berapa biaya berlangganan SUGIDash untuk pemerintah?', en: 'How much does SUGIDash cost for government?' },
-        a: { id: 'Paket SaaS untuk pemerintah (B2G) dibanderol Rp1.750.000 per bulan. Termasuk akses penuh ke Government Dashboard, Government Insight Engine, 15+ dataset ketahanan pangan, dan dukungan teknis.', en: 'The B2G SaaS package is priced at IDR 1,750,000 per month. Includes full access to Government Dashboard, Government Insight Engine, 15+ food security datasets, and technical support.' },
+        a: { id: 'Paket SaaS untuk pemerintah (B2G) dibanderol Rp1.500.000 per bulan. Termasuk akses penuh ke Government Dashboard, Government Insight Engine, 15+ dataset ketahanan pangan, dan dukungan teknis.', en: 'The B2G SaaS package is priced at IDR 1,500,000 per month. Includes full access to Government Dashboard, Government Insight Engine, 15+ food security datasets, and technical support.' },
       },
       {
         q: { id: 'Dataset apa saja yang sudah terintegrasi?', en: 'What datasets are already integrated?' },
@@ -45,7 +45,7 @@ export const faqData = [
     items: [
       {
         q: { id: 'Bagaimana model bisnis SUGI?', en: 'What is SUGI\'s business model?' },
-        a: { id: 'SUGI menerapkan cross-subsidy model: chatbot AI gratis untuk petani sebagai kanal adopsi. Pendapatan berasal dari SaaS B2G (Rp1.750.000/bln), B2B (Rp1.000.000/bln), layanan Kelompok Tani (Rp400.000/bln), dan Data-as-a-Service untuk lembaga riset.', en: 'SUGI applies a cross-subsidy model: free AI chatbot for farmers as an adoption channel. Revenue comes from B2G SaaS (IDR 1,750,000/mo), B2B (IDR 1,000,000/mo), Farmer Group services (IDR 400,000/mo), and Data-as-a-Service for research institutions.' },
+        a: { id: 'SUGI menerapkan cross-subsidy model: chatbot AI gratis untuk petani sebagai kanal adopsi. Pendapatan berasal dari SaaS B2G (Rp1.500.000/bln), B2B (Rp1.000.000/bln), layanan Kelompok Tani (Rp300.000/bln), dan Data-as-a-Service untuk lembaga riset.', en: 'SUGI applies a cross-subsidy model: free AI chatbot for farmers as an adoption channel. Revenue comes from B2G SaaS (IDR 1,500,000/mo), B2B (IDR 1,000,000/mo), Farmer Group services (IDR 300,000/mo), and Data-as-a-Service for research institutions.' },
       },
       {
         q: { id: 'Apa competitive moat SUGI?', en: 'What is SUGI\'s competitive moat?' },

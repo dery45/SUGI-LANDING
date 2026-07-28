@@ -11,6 +11,7 @@ import BenefitCard from '../components/product/BenefitCard'
 import UseCaseCard from '../components/product/UseCaseCard'
 import ArchitectureDiagram from '../components/government/ArchitectureDiagram'
 import InsightExampleCard from '../components/government/InsightExampleCard'
+import { faqData } from '../data/faqData'
 
 export default function GovernmentPage() {
   const { lang } = useLanguage()
@@ -120,14 +121,7 @@ export default function GovernmentPage() {
       { icon: '🏗️', title: 'Skenario Cadangan Pangan', actor: 'Badan Pangan Nasional', situation: 'CPPD suatu provinsi turun di bawah ambang batas. Sistem langsung menampilkan perubahan ini di peta interaktif dan peringkat CPPD Dashboard Pemerintah. Government Insight Engine mengangkatnya dalam siklus rekomendasi jam berikutnya, yang kemudian dikonfirmasi silang dengan sentimen dan masalah dari Chatbot Insight di wilayah yang sama — memvalidasi bahwa keluhan ketersediaan pangan memang meningkat di tingkat petani.', outcome: 'Tim Bapanas menerima peringatan dini dan rekomendasi redistribusi dalam waktu kurang dari 1 jam setelah perubahan data, bukan menunggu siklus laporan bulanan berikutnya.' },
       { icon: '💰', title: 'Skenario Keluhan Harga', actor: 'Kementerian Perdagangan', situation: 'Lonjakan keluhan harga komoditas cabai terdeteksi di tab Masalah Chatbot Insight — frekuensi mention naik 300% dalam 3 hari. Sistem secara otomatis mengorelasikan temuan ini dengan tren harga produsen dan konsumen di Dashboard Pemerintah, menunjukkan disparitas harga yang melebar di 5 provinsi.', outcome: 'Rekomendasi intervensi harga diterbitkan oleh Government Insight Engine, menjadi dasar rapat koordinasi yang diadakan dalam minggu yang sama — bukan menunggu survei harga periode berikutnya.' },
     ]},
-    faq: { badge: 'FAQ', title: 'Pertanyaan Umum dari Pemerintah', items: [
-      { q: 'Seberapa sering data dalam dashboard diperbarui?', a: 'Data dalam Dashboard Pemerintah diperbarui secara real-time sesuai dengan siklus impor data dari sumber masing-masing. Untuk dataset yang terintegrasi langsung (seperti SatuHarga Kemendag), pembaruan dapat terjadi harian. Pemerintah juga dapat melakukan impor massal kapan saja melalui fitur Manajemen Data Induk.' },
-      { q: 'Bagaimana keamanan dan kontrol akses data di SUGI?', a: 'SUGI menerapkan autentikasi JWT + bcrypt dengan kontrol akses berbasis peran (RBAC). Setiap akun pemerintah hanya dapat mengakses data dan halaman yang relevan dengan kewenangannya. Semua data diproses secara on-premise, tidak ada data yang dikirim ke server eksternal.' },
-      { q: 'Bagaimana proses integrasi dengan sumber data yang sudah ada?', a: 'SUGI mendukung impor massal (bulk upsert) langsung dari format yang sudah digunakan kementerian, seperti SatuHarga Kemendag atau data BPS. Sistem deteksi kunci unik otomatis per dataset memastikan re-impor aman dilakukan tanpa duplikasi data.' },
-      { q: 'Apakah data bisa diekspor untuk keperluan pelaporan resmi?', a: 'Ya. Seluruh data dashboard dapat diekspor dalam format CSV, PDF, Excel, dan JSON, sehingga langsung bisa dipakai dalam alur pelaporan kementerian yang sudah berjalan tanpa perlu proses migrasi data tambahan.' },
-      { q: 'Apakah SUGI bisa diakses dari perangkat mobile?', a: 'Dashboard Pemerintah dioptimalkan untuk akses desktop dengan tampilan penuh, namun tetap responsif di tablet. Untuk akses mobile lapangan, SUGI menyediakan PWA (Progressive Web App) yang memungkinkan akses offline dan notifikasi push.' },
-      { q: 'Bagaimana dengan infrastruktur dan hosting?', a: 'SUGI dirancang untuk deployment on-premise di lingkungan pemerintah. Seluruh komponen — MongoDB, ChromaDB, server AI, dan dashboard — berjalan di infrastruktur yang Anda kontrol. Tidak ada data yang keluar dari lingkungan pemerintahan.' },
-    ]},
+    faq: { badge: 'FAQ', title: 'Pertanyaan Umum dari Pemerintah' },
     cta: { title: 'Siap Memulai Transformasi Data Ketahanan Pangan?', subtitle: 'Jadwalkan demo untuk melihat bagaimana SUGI dapat diintegrasikan dengan sumber data pemerintah yang sudah Anda miliki.', btn: 'Jadwalkan Demo', btn2: 'Pelajari Fitur' },
   } : {
     seo: { title: 'For Government', desc: 'AI-powered national food security dashboard for the Government of Indonesia. Integrated BPS, Bapanas, Kemendag data in one platform.' },
@@ -223,14 +217,7 @@ export default function GovernmentPage() {
       { icon: '🏗️', title: 'Food Reserve Scenario', actor: 'National Food Agency', situation: 'A province\'s CPPD falls below the safety threshold. The system immediately displays this change on the interactive map and CPPD ranking. The Government Insight Engine raises it in the next hour\'s recommendation cycle, then cross-validates with sentiment and issues from Chatbot Insight in the same region — confirming that food availability complaints are indeed rising at the farmer level.', outcome: 'The Bapanas team receives an early warning and redistribution recommendation in under 1 hour after the data change, instead of waiting for the next monthly reporting cycle.' },
       { icon: '💰', title: 'Price Complaint Scenario', actor: 'Ministry of Trade', situation: 'A surge in chili price complaints is detected in the Chatbot Insight Issues tab — mention frequency rises 300% in 3 days. The system automatically correlates this finding with producer and consumer price trends in the Government Dashboard, showing widening price disparity across 5 provinces.', outcome: 'A price intervention recommendation is issued by the Government Insight Engine, becoming the basis for a coordination meeting held that same week — not waiting for the next price survey period.' },
     ]},
-    faq: { badge: 'FAQ', title: 'Frequently Asked Questions', items: [
-      { q: 'How often is dashboard data updated?', a: 'Government Dashboard data is updated in real-time according to each source\'s import cycle. For directly integrated datasets (such as SatuHarga Kemendag), updates can occur daily. Governments can also perform bulk imports anytime through the Master Data Management feature.' },
-      { q: 'How is data security and access control handled?', a: 'SUGI implements JWT + bcrypt authentication with role-based access control (RBAC). Each government account can only access data and pages relevant to their authority. All data is processed on-premise — no data is sent to external servers.' },
-      { q: 'How does integration with existing data sources work?', a: 'SUGI supports bulk import (upsert) directly from formats already used by ministries, such as SatuHarga Kemendag or BPS data. Automatic unique key detection per dataset ensures safe re-import without data duplication.' },
-      { q: 'Can data be exported for official reporting?', a: 'Yes. All dashboard data can be exported in CSV, PDF, Excel, and JSON formats, ready for use in existing ministry reporting workflows without additional data migration.' },
-      { q: 'Can SUGI be accessed from mobile devices?', a: 'The Government Dashboard is optimized for desktop with full display, but remains responsive on tablets. For field mobile access, SUGI provides a PWA (Progressive Web App) enabling offline access and push notifications.' },
-      { q: 'What about infrastructure and hosting?', a: 'SUGI is designed for on-premise deployment within government environments. All components — MongoDB, ChromaDB, AI server, and dashboard — run on your controlled infrastructure. No data leaves the government environment.' },
-    ]},
+    faq: { badge: 'FAQ', title: 'Frequently Asked Questions' },
     cta: { title: 'Ready to Transform Your Food Security Data?', subtitle: 'Schedule a demo to see how SUGI can be integrated with your existing government data sources.', btn: 'Schedule a Demo', btn2: 'Explore Features' },
   }
 
@@ -529,7 +516,7 @@ export default function GovernmentPage() {
             <Badge className="mb-3">{c.faq.badge}</Badge>
             <h2 className="text-3xl md:text-4xl font-bold">{c.faq.title}</h2>
           </div>
-          <FAQAccordion items={c.faq.items} />
+          <FAQAccordion items={faqData.find(f => f.id === 'pemerintah').items.map(i => ({ q: i.q[lang], a: i.a[lang] }))} />
         </Container>
       </Section>
 

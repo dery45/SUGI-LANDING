@@ -6,11 +6,13 @@ import Section from '../components/ui/Section'
 import Button from '../components/ui/Button'
 import Badge from '../components/ui/Badge'
 import SEOHead from '../components/ui/SEOHead'
+import FAQAccordion from '../components/ui/FAQAccordion'
 import BenefitCard from '../components/product/BenefitCard'
 import UseCaseCard from '../components/product/UseCaseCard'
 import InsightExampleCard from '../components/government/InsightExampleCard'
 import ChatbotPreviewCTA from '../components/farmer/ChatbotPreviewCTA'
 import FarmerSolutionDiagram from '../components/farmer/FarmerSolutionDiagram'
+import { faqData } from '../data/faqData'
 
 export default function FarmerPage() {
   const { lang } = useLanguage()
@@ -386,7 +388,23 @@ export default function FarmerPage() {
         </Container>
       </Section>
 
-      {/* 8. CTA */}
+      {/* 8. FAQ */}
+      <Section id="faq" className="bg-gray-50">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <Badge className="mb-3">FAQ</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-shade-600">
+              {isID ? 'Pertanyaan Umum Petani' : 'Frequently Asked Questions'}
+            </h2>
+            <p className="mt-4 text-lg text-gray-500">
+              {isID ? 'Jawaban cepat untuk pertanyaan yang sering diajukan petani.' : 'Quick answers to commonly asked farmer questions.'}
+            </p>
+          </div>
+          <FAQAccordion items={faqData.find(f => f.id === 'petani').items.map(i => ({ q: i.q[lang], a: i.a[lang] }))} />
+        </Container>
+      </Section>
+
+      {/* 9. CTA */}
       <Section dark>
         <Container>
           <div className="max-w-2xl mx-auto text-center">

@@ -126,7 +126,7 @@ export const content = {
         },
         {
           title: 'Cross-Subsidy Model',
-          desc: 'Chatbot Telegram gratis untuk petani sebagai kanal adopsi awal. Pendanaan dari layanan SaaS B2B (Kelompok Tani Rp400rb/bln, Agribisnis Rp1jt/bln, Government Rp1,75jt/bln) dan Data-as-a-Service untuk lembaga riset.',
+          desc: 'Chatbot Telegram gratis untuk petani sebagai kanal adopsi awal. Pendanaan dari layanan SaaS B2B (Kelompok Tani Rp300rb/bln, Agribisnis Rp1jt/bln, Government Rp1,5jt/bln) dan Data-as-a-Service untuk lembaga riset.',
         },
         {
           title: 'Data Flywheel',
