@@ -33,6 +33,7 @@ export default function Footer() {
               <li><Link to="/" className="hover:text-primary transition-colors">{isID ? 'Beranda' : 'Home'}</Link></li>
               <li><Link to="/untuk-petani" className="hover:text-primary transition-colors">{isID ? 'Untuk Petani' : 'For Farmers'}</Link></li>
               <li><Link to="/untuk-pemerintah" className="hover:text-primary transition-colors">{isID ? 'Untuk Pemerintah' : 'For Government'}</Link></li>
+              <li><Link to="/algoritma" className="hover:text-primary transition-colors">{isID ? 'Algoritma' : 'Algorithm'}</Link></li>
             </ul>
           </div>
 

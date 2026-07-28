@@ -7,6 +7,7 @@ const navLinks = [
   { key: 'beranda', path: '/' },
   { key: 'untuk-petani', path: '/untuk-petani' },
   { key: 'untuk-pemerintah', path: '/untuk-pemerintah' },
+  { key: 'algoritma', path: '/algoritma' },
 ]
 
 export default function Navbar() {
@@ -55,12 +56,14 @@ export default function Navbar() {
     const content = {
       id: {
         beranda: 'Beranda',
+        algoritma: 'Algoritma',
         'untuk-petani': 'Untuk Petani',
         'untuk-pemerintah': 'Untuk Pemerintah',
         id: 'ID', en: 'EN',
       },
       en: {
         beranda: 'Home',
+        algoritma: 'Algorithm',
         'untuk-petani': 'For Farmers',
         'untuk-pemerintah': 'For Government',
         id: 'ID', en: 'EN',

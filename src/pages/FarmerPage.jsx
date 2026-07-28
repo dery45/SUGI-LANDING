@@ -355,16 +355,21 @@ export default function FarmerPage() {
               )}
               {/* Penjualan */}
               {tab === 'jual' && (
-                <div className="max-w-3xl mx-auto">
-                  <h3 className="text-2xl font-bold text-white mb-4">{c.fitur.jualTitle}</h3>
-                  <p className="text-gray-400 mb-6">{c.fitur.jualDesc}</p>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {c.fitur.jualKpis.map((kpi, i) => (
-                      <div key={i} className="rounded-lg bg-white/5 border border-white/10 p-4 text-center">
-                        <p className="text-sm font-bold text-primary">{kpi.split('(')[0].trim()}</p>
-                        {kpi.includes('(') && <p className="text-xs text-gray-400 mt-1">({kpi.split('(')[1]}</p>}
-                      </div>
-                    ))}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-4">{c.fitur.jualTitle}</h3>
+                    <p className="text-gray-400 mb-6">{c.fitur.jualDesc}</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 gap-3">
+                      {c.fitur.jualKpis.map((kpi, i) => (
+                        <div key={i} className="rounded-lg bg-white/5 border border-white/10 p-4 text-center">
+                          <p className="text-sm font-bold text-primary">{kpi.split('(')[0].trim()}</p>
+                          {kpi.includes('(') && <p className="text-xs text-gray-400 mt-1">({kpi.split('(')[1]}</p>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <img src="/image/dashboard-preview/farmer-selling-distribution.png" alt="Sales & Distribution" className="w-full h-auto" />
                   </div>
                 </div>
               )}

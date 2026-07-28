@@ -5,6 +5,7 @@ export default function Button({ children, variant = 'primary', to, href, classN
   const variants = {
     primary: 'bg-primary text-shade-600 hover:bg-tint-100 hover:scale-[1.02] shadow-lg shadow-primary/20',
     secondary: 'border-2 border-primary text-primary hover:bg-primary hover:text-shade-600 hover:scale-[1.02]',
+    outline: 'border-2 border-white/30 text-white/80 hover:border-white hover:text-white hover:scale-[1.02]',
     ghost: 'text-white/80 hover:text-white hover:bg-white/10',
   }
 

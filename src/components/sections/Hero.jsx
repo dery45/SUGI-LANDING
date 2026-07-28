@@ -14,6 +14,7 @@ export default function Hero() {
     : 'Empowering farmers, government, and agribusiness partners with on-premise hybrid RAG AI — free, secure, and contextual.'
   const cta1 = isID ? 'Untuk Petani' : 'For Farmers'
   const cta2 = isID ? 'Untuk Pemerintah & Mitra' : 'For Government & Partners'
+  const cta3 = isID ? 'Algoritma' : 'Algorithm'
 
   const stats = isID
     ? [
@@ -57,6 +58,7 @@ export default function Hero() {
           <div className="mt-10 flex flex-wrap gap-4">
             <Button to="/untuk-petani">{cta1}</Button>
             <Button variant="secondary" to="/untuk-pemerintah">{cta2}</Button>
+            <Button variant="outline" to="/algoritma">{cta3}</Button>
           </div>
         </div>
 

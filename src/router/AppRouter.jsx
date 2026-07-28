@@ -11,6 +11,7 @@ import GovernmentPage from '../pages/GovernmentPage'
 import FarmerPage from '../pages/FarmerPage'
 import VisionMission from '../pages/VisionMission'
 import AITechnology from '../pages/AITechnology'
+import Algorithm from '../pages/Algorithm'
 import NotFound from '../pages/NotFound'
 
 const ProductIndex = lazy(() => import('../pages/products/ProductIndex'))
@@ -57,6 +58,7 @@ export default function AppRouter() {
             <Route path="/untuk-petani" element={<AnimatedPage><FarmerPage /></AnimatedPage>} />
             <Route path="/visi-misi" element={<AnimatedPage><VisionMission /></AnimatedPage>} />
             <Route path="/teknologi-ai" element={<AnimatedPage><AITechnology /></AnimatedPage>} />
+            <Route path="/algoritma" element={<AnimatedPage><Algorithm /></AnimatedPage>} />
 
             <Route path="/produk" element={<SuspenseWrapper><AnimatedPage><ProductIndex /></AnimatedPage></SuspenseWrapper>} />
             <Route path="/produk/chatbot-telegram" element={<SuspenseWrapper><AnimatedPage><TelegramChatbot /></AnimatedPage></SuspenseWrapper>} />

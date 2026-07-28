@@ -48,7 +48,8 @@ function DesktopPhase({ phase, index, total, isInView }) {
         style={{ transitionDelay: `${delay}ms` }}
       >
         <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">{phase.period}</span>
-        <h3 className="text-base font-bold text-shade-600 mt-3">{phase.title}</h3>
+        {phase.label && <div className="mt-2 inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold rounded">{phase.label}</div>}
+        <h3 className="text-base font-bold text-shade-600 mt-2">{phase.title}</h3>
         <p className="text-xs text-gray-500 mt-2 leading-relaxed px-2">{phase.desc}</p>
       </div>
     </div>
@@ -78,6 +79,7 @@ function MobilePhase({ phase, index, isInView }) {
         style={{ transitionDelay: `${delay}ms` }}
       >
         <span className="inline-block px-2.5 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded-full mb-2">{phase.period}</span>
+        {phase.label && <div className="mb-1 inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold rounded">{phase.label}</div>}
         <h3 className="text-sm font-bold text-shade-600">{phase.title}</h3>
         <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">{phase.desc}</p>
       </div>
