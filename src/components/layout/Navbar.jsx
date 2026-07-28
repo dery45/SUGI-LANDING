@@ -1,19 +1,16 @@
 import { useState, useEffect } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../../contexts/LanguageContext'
 import Container from '../ui/Container'
 
-const navLinks = [
-  { key: 'beranda', path: '/' },
-  { key: 'tentang', path: '/tentang-kami' },
-  { key: 'masalah', path: '/masalah' },
-  { key: 'solusi', path: '/solusi' },
-  { key: 'ekosistem', path: '/ekosistem' },
-  { key: 'fitur', path: '/fitur' },
-  { key: 'teknologi', path: '/teknologi-ai' },
-  { key: 'tim', path: '/tim' },
-  { key: 'faq', path: '/faq' },
-  { key: 'kontak', path: '/kontak' },
+const sectionLinks = [
+  { key: 'beranda', path: '/', isHash: false },
+  { key: 'masalah', path: 'masalah', isHash: true },
+  { key: 'solusi', path: 'solusi', isHash: true },
+  { key: 'ekosistem', path: 'ekosistem', isHash: true },
+  { key: 'tim', path: 'tim', isHash: true },
+  { key: 'faq', path: 'faq', isHash: true },
+  { key: 'kontak', path: 'kontak', isHash: true },
 ]
 
 export default function Navbar() {
@@ -21,7 +18,9 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { lang, toggleLang } = useLanguage()
   const location = useLocation()
+  const navigate = useNavigate()
   const isHome = location.pathname === '/'
+  const hasSection = isHome && location.hash.length > 0
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -33,33 +32,49 @@ export default function Navbar() {
     setMobileOpen(false)
   }, [location])
 
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '')
+      setTimeout(() => {
+        const el = document.getElementById(id)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
+    }
+  }, [location])
+
+  const handleNavClick = (e, link) => {
+    if (!link.isHash) return
+    e.preventDefault()
+    if (isHome) {
+      const el = document.getElementById(link.path)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    } else {
+      navigate(`/#${link.path}`)
+    }
+  }
+
   const t = (key) => {
     const content = {
       id: {
-        beranda: 'Beranda', tentang: 'Tentang Kami', masalah: 'Masalah',
-        solusi: 'Solusi', ekosistem: 'Ekosistem', fitur: 'Fitur',
-        teknologi: 'Teknologi AI', tim: 'Tim', faq: 'FAQ', kontak: 'Kontak',
+        beranda: 'Beranda', masalah: 'Masalah',
+        solusi: 'Solusi', ekosistem: 'Ekosistem',
+        tim: 'Tim', faq: 'FAQ', kontak: 'Kontak',
         id: 'ID', en: 'EN',
       },
       en: {
-        beranda: 'Home', tentang: 'About Us', masalah: 'Problem',
-        solusi: 'Solution', ekosistem: 'Ecosystem', fitur: 'Features',
-        teknologi: 'AI Technology', tim: 'Team', faq: 'FAQ', kontak: 'Contact',
+        beranda: 'Home', masalah: 'Problem',
+        solusi: 'Solution', ekosistem: 'Ecosystem',
+        tim: 'Team', faq: 'FAQ', kontak: 'Contact',
         id: 'ID', en: 'EN',
       },
     }
     return content[lang]?.[key] ?? key
   }
 
-  const linkClass = ({ isActive }) =>
-    `text-sm font-medium transition-colors duration-200 ${
-      isActive ? 'text-primary' : scrolled || !isHome ? 'text-shade-600' : 'text-white/80'
-    } hover:text-primary`
-
-  const mobileLinkClass = ({ isActive }) =>
-    `block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-      isActive ? 'bg-primary/10 text-primary' : 'text-shade-600 hover:bg-gray-50'
-    }`
+  const linkTextColor = scrolled || !isHome ? 'text-shade-600' : 'text-white/80'
+  const isActiveHash = (link) => isHome && location.hash === `#${link.path}`
 
   return (
     <nav
@@ -74,11 +89,33 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden lg:flex items-center gap-6">
-            {navLinks.map(link => (
-              <NavLink key={link.key} to={link.path} className={linkClass}>
-                {t(link.key)}
-              </NavLink>
-            ))}
+            {sectionLinks.map(link =>
+              link.isHash ? (
+                <a
+                  key={link.key}
+                  href={`/#${link.path}`}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className={`text-sm font-medium transition-colors duration-200 ${
+                    isActiveHash(link) ? 'text-primary' : linkTextColor
+                  } hover:text-primary`}
+                >
+                  {t(link.key)}
+                </a>
+              ) : (
+                <NavLink
+                  key={link.key}
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `text-sm font-medium transition-colors duration-200 ${
+                      (!hasSection && isActive) ? 'text-primary' : linkTextColor
+                    } hover:text-primary`
+                  }
+                  end
+                >
+                  {t(link.key)}
+                </NavLink>
+              )
+            )}
             <button
               onClick={toggleLang}
               className={`ml-2 px-3 py-1 text-xs font-bold rounded-lg border transition-all ${
@@ -108,11 +145,36 @@ export default function Navbar() {
         <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg max-h-[80vh] overflow-y-auto" role="navigation" aria-label="Menu navigasi mobile">
           <Container>
             <div className="py-4 space-y-1">
-              {navLinks.map(link => (
-                <NavLink key={link.key} to={link.path} className={mobileLinkClass}>
-                  {t(link.key)}
-                </NavLink>
-              ))}
+              {sectionLinks.map(link =>
+                link.isHash ? (
+                  <a
+                    key={link.key}
+                    href={`/#${link.path}`}
+                    onClick={(e) => {
+                      handleNavClick(e, link)
+                      setMobileOpen(false)
+                    }}
+                    className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                      isActiveHash(link) ? 'bg-primary/10 text-primary' : 'text-shade-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    {t(link.key)}
+                  </a>
+                ) : (
+                  <NavLink
+                    key={link.key}
+                    to={link.path}
+                    className={({ isActive }) =>
+                      `block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                        (!hasSection && isActive) ? 'bg-primary/10 text-primary' : 'text-shade-600 hover:bg-gray-50'
+                      }`
+                    }
+                    end
+                  >
+                    {t(link.key)}
+                  </NavLink>
+                )
+              )}
               <button
                 onClick={toggleLang}
                 className="w-full mt-2 px-4 py-3 text-sm font-bold text-center rounded-lg border border-shade-300 text-shade-500 hover:bg-shade-50"

@@ -7,16 +7,8 @@ import ScrollProgressIndicator from '../components/ui/ScrollProgressIndicator'
 import PageTransitionWrapper from '../components/ui/PageTransitionWrapper'
 
 import Home from '../pages/Home'
-import AboutUs from '../pages/AboutUs'
-import Problem from '../pages/Problem'
-import Solution from '../pages/Solution'
 import VisionMission from '../pages/VisionMission'
-import Ecosystem from '../pages/Ecosystem'
-import Features from '../pages/Features'
 import AITechnology from '../pages/AITechnology'
-import Team from '../pages/Team'
-import Contact from '../pages/Contact'
-import FAQ from '../pages/FAQ'
 import NotFound from '../pages/NotFound'
 
 const ProductIndex = lazy(() => import('../pages/products/ProductIndex'))
@@ -59,16 +51,8 @@ export default function AppRouter() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
-            <Route path="/tentang-kami" element={<AnimatedPage><AboutUs /></AnimatedPage>} />
-            <Route path="/masalah" element={<AnimatedPage><Problem /></AnimatedPage>} />
-            <Route path="/solusi" element={<AnimatedPage><Solution /></AnimatedPage>} />
             <Route path="/visi-misi" element={<AnimatedPage><VisionMission /></AnimatedPage>} />
-            <Route path="/ekosistem" element={<AnimatedPage><Ecosystem /></AnimatedPage>} />
-            <Route path="/fitur" element={<AnimatedPage><Features /></AnimatedPage>} />
             <Route path="/teknologi-ai" element={<AnimatedPage><AITechnology /></AnimatedPage>} />
-            <Route path="/tim" element={<AnimatedPage><Team /></AnimatedPage>} />
-            <Route path="/kontak" element={<AnimatedPage><Contact /></AnimatedPage>} />
-            <Route path="/faq" element={<AnimatedPage><FAQ /></AnimatedPage>} />
 
             <Route path="/produk" element={<SuspenseWrapper><AnimatedPage><ProductIndex /></AnimatedPage></SuspenseWrapper>} />
             <Route path="/produk/chatbot-telegram" element={<SuspenseWrapper><AnimatedPage><TelegramChatbot /></AnimatedPage></SuspenseWrapper>} />

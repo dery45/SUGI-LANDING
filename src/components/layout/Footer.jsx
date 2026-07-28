@@ -1,10 +1,23 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useLanguage } from '../../contexts/LanguageContext'
 import Container from '../ui/Container'
 
 export default function Footer() {
   const { lang } = useLanguage()
   const isID = lang === 'id'
+  const navigate = useNavigate()
+  const location = useLocation()
+  const isHome = location.pathname === '/'
+
+  const scrollToSection = (e, id) => {
+    e.preventDefault()
+    if (isHome) {
+      const el = document.getElementById(id)
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else {
+      navigate(`/#${id}`)
+    }
+  }
 
   const footerContent = {
     tagline: isID
@@ -33,19 +46,19 @@ export default function Footer() {
             <h4 className="font-semibold text-sm text-primary mb-4">{footerContent.product}</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li><a href="https://t.me/sugi_demo_llmbot" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">SUGI AI</a></li>
-              <li><Link to="/ekosistem" className="hover:text-primary transition-colors">SUGIDash</Link></li>
-              <li><Link to="/ekosistem" className="hover:text-primary transition-colors">SUGI PWA</Link></li>
-              <li><Link to="/ekosistem" className="hover:text-primary transition-colors">Insight Engine</Link></li>
+              <li><a href="/#ekosistem" onClick={(e) => scrollToSection(e, 'ekosistem')} className="hover:text-primary transition-colors">SUGIDash</a></li>
+              <li><a href="/#ekosistem" onClick={(e) => scrollToSection(e, 'ekosistem')} className="hover:text-primary transition-colors">SUGI PWA</a></li>
+              <li><a href="/#ekosistem" onClick={(e) => scrollToSection(e, 'ekosistem')} className="hover:text-primary transition-colors">Insight Engine</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-sm text-primary mb-4">{footerContent.company}</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link to="/tentang-kami" className="hover:text-primary transition-colors">{isID ? 'Tentang Kami' : 'About Us'}</Link></li>
-              <li><Link to="/tim" className="hover:text-primary transition-colors">Tim</Link></li>
+              <li><a href="/#tentang-kami" onClick={(e) => scrollToSection(e, 'tentang-kami')} className="hover:text-primary transition-colors">{isID ? 'Tentang Kami' : 'About Us'}</a></li>
+              <li><a href="/#tim" onClick={(e) => scrollToSection(e, 'tim')} className="hover:text-primary transition-colors">Tim</a></li>
               <li><Link to="/visi-misi" className="hover:text-primary transition-colors">{isID ? 'Visi & Misi' : 'Vision & Mission'}</Link></li>
-              <li><Link to="/kontak" className="hover:text-primary transition-colors">{isID ? 'Kontak' : 'Contact'}</Link></li>
+              <li><a href="/#kontak" onClick={(e) => scrollToSection(e, 'kontak')} className="hover:text-primary transition-colors">{isID ? 'Kontak' : 'Contact'}</a></li>
             </ul>
           </div>
         </div>
