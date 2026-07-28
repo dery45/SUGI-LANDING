@@ -9,6 +9,7 @@ Landing page for **SUGI Ecosystem** — an integrated AI platform for Indonesian
 - **React Router v7** (lazy-loaded routes, AnimatePresence page transitions)
 - **Framer Motion** (scroll animations, staggered reveals, page transitions)
 - **react-helmet-async** (per-route SEO meta tags)
+- **EmailJS** (client-side email delivery for contact form)
 
 ## Project Structure
 
@@ -24,8 +25,7 @@ src/
 ├── contexts/          # LanguageContext (ID/EN switch)
 ├── data/              # siteContent, productsContent, faqData, teamData, partnersData
 ├── pages/
-│   ├── products/      # 11 lazy-loaded product deep-dive pages
-│   └── ...            # Home, AboutUs, Problem, Solution, VisionMission, etc.
+│   └── ...            # Home, UntukPetani, UntukPemerintah, VisiMisi, etc.
 └── router/            # AppRouter with lazy routes + AnimatePresence
 ```
 
@@ -34,16 +34,9 @@ src/
 | Route | Page |
 |-------|------|
 | `/` | Beranda (Home) |
-| `/tentang-kami` | Tentang Kami |
-| `/masalah` | Masalah |
-| `/solusi` | Solusi |
+| `/untuk-petani` | Untuk Petani |
+| `/untuk-pemerintah` | Untuk Pemerintah |
 | `/visi-misi` | Visi & Misi |
-| `/ekosistem` | Ekosistem |
-| `/fitur` | Fitur |
-| `/teknologi-ai` | Teknologi AI |
-| `/tim` | Tim |
-| `/kontak` | Kontak |
-| `/faq` | FAQ |
 | `/produk` | Index produk |
 | `/produk/*` | 11 halaman produk detail (lazy-loaded) |
 
@@ -51,9 +44,20 @@ src/
 
 ```bash
 npm install
-npm run dev      # Development server (http://localhost:5173)
-npm run build    # Production build → dist/
-npm run preview  # Preview production build
+cp .env.example .env    # Fill in EmailJS credentials
+npm run dev              # Development server (http://localhost:5173)
+npm run build            # Production build → dist/
+npm run preview          # Preview production build
+```
+
+## Environment Variables
+
+Create a `.env` file with your EmailJS credentials (get these from [emailjs.com](https://www.emailjs.com)):
+
+```
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
 ```
 
 ## Deployment
@@ -69,6 +73,8 @@ Deploys to **Netlify**. Config in `netlify.toml`:
 npm run build
 npx netlify deploy --prod --dir=dist
 ```
+
+Netlify Forms must be enabled in the Netlify dashboard (Forms > Enable form detection) for the contact form to work alongside EmailJS.
 
 ## Content
 
