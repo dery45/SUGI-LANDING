@@ -5,6 +5,7 @@ import Container from '../ui/Container'
 
 const navLinks = [
   { key: 'beranda', path: '/' },
+  { key: 'one-page', path: '/one-page' },
   { key: 'untuk-petani', path: '/untuk-petani' },
   { key: 'untuk-pemerintah', path: '/untuk-pemerintah' },
   { key: 'algoritma', path: '/algoritma' },
@@ -56,6 +57,7 @@ export default function Navbar() {
     const content = {
       id: {
         beranda: 'Beranda',
+        'one-page': 'One Page',
         algoritma: 'Algoritma',
         'untuk-petani': 'Untuk Petani',
         'untuk-pemerintah': 'Untuk Pemerintah',
@@ -63,6 +65,7 @@ export default function Navbar() {
       },
       en: {
         beranda: 'Home',
+        'one-page': 'One Page',
         algoritma: 'Algorithm',
         'untuk-petani': 'For Farmers',
         'untuk-pemerintah': 'For Government',

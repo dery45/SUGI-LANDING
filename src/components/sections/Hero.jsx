@@ -18,16 +18,16 @@ export default function Hero() {
 
   const stats = isID
     ? [
-        { value: '94/100', label: 'RAG Score' },
-        { value: '15+', label: 'Dataset Pangan Nasional' },
-        { value: '10.000+', label: 'Data Tanaman & Hama' },
-        { value: '100%', label: 'Gratis untuk Petani' },
+        { value: '49,41%', label: 'Rumah tangga miskin dari sektor pertanian' },
+        { value: '66%', label: 'Petani berusia di atas 45 tahun' },
+        { value: '15%', label: 'Potensi hemat biaya tanam petani' },
+        { value: '<24 Jam', label: 'Respons kebijakan dari hitungan minggu' },
       ]
     : [
-        { value: '94/100', label: 'RAG Score' },
-        { value: '15+', label: 'National Food Datasets' },
-        { value: '10,000+', label: 'Plant & Pest Data' },
-        { value: '100%', label: 'Free for Farmers' },
+        { value: '49.41%', label: 'Poor households from agriculture sector' },
+        { value: '66%', label: 'Farmers aged over 45 years old' },
+        { value: '15%', label: 'Potential planting cost savings' },
+        { value: '<24 Hrs', label: 'Policy response, from weeks' },
       ]
 
   return (

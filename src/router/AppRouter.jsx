@@ -7,6 +7,7 @@ import ScrollProgressIndicator from '../components/ui/ScrollProgressIndicator'
 import PageTransitionWrapper from '../components/ui/PageTransitionWrapper'
 
 import Home from '../pages/Home'
+import OnePage from '../pages/OnePage'
 import GovernmentPage from '../pages/GovernmentPage'
 import FarmerPage from '../pages/FarmerPage'
 import VisionMission from '../pages/VisionMission'
@@ -45,15 +46,17 @@ function AnimatedPage({ children }) {
 
 export default function AppRouter() {
   const location = useLocation()
+  const isDeck = location.pathname === '/one-page'
 
   return (
     <div className="flex min-h-screen flex-col">
-      <ScrollProgressIndicator />
-      <Navbar />
+      {!isDeck && <ScrollProgressIndicator />}
+      {!isDeck && <Navbar />}
       <main className="flex-1">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
+            <Route path="/one-page" element={<AnimatedPage><OnePage /></AnimatedPage>} />
             <Route path="/untuk-pemerintah" element={<AnimatedPage><GovernmentPage /></AnimatedPage>} />
             <Route path="/untuk-petani" element={<AnimatedPage><FarmerPage /></AnimatedPage>} />
             <Route path="/visi-misi" element={<AnimatedPage><VisionMission /></AnimatedPage>} />
@@ -77,7 +80,7 @@ export default function AppRouter() {
           </Routes>
         </AnimatePresence>
       </main>
-      <Footer />
+      {!isDeck && <Footer />}
     </div>
   )
 }

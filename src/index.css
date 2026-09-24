@@ -41,3 +41,17 @@
     }
   }
 }
+
+@layer components {
+  /* One-page pitch deck: each slide fills a 16:10-proportioned viewport
+     (62.5vw height, capped at 92vh) with vertically centered content.
+     Desktop only — mobile/tablet fall back to natural stacked height. */
+  @media (min-width: 1024px) {
+    .deck-slide {
+      min-height: min(92vh, 62.5vw);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

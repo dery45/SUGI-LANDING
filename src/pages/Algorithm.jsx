@@ -76,7 +76,8 @@ export default function Algorithm() {
   ]
 
   const metricTable = [
-    { metric: 'RAG Score', value: '94/100' },
+    { metric: t('Dampak petani', 'Farmer impact'), value: t('Target 15% hemat pupuk & pestisida', 'Target 15% fertilizer & pesticide savings') },
+    { metric: t('Respons pemerintah', 'Government response'), value: t('Dari minggu ke <24 jam', 'From weeks to <24 hours') },
     { metric: t('Faithfulness', 'Faithfulness'), value: t('Jawaban tetap dalam konteks yang diambil', 'Answer stays within retrieved context') },
     { metric: t('Relevance', 'Relevance'), value: t('Dokumen sesuai maksud pertanyaan', 'Retrieved documents match query intent') },
     { metric: t('Akurasi cakupan', 'Scope accuracy'), value: t('Berhasil memblokir pertanyaan di luar topik pertanian', 'Successfully blocks non-agriculture queries') },
@@ -85,7 +86,7 @@ export default function Algorithm() {
   ]
 
   const modelTable = [
-    { model: 'sugi-v0.1L (Llama 3.2)', role: t('Generasi jawaban utama, ringkasan memori sesi', 'Primary answer generation, session memory summary'), temp: '0.3', note: t('Model utama, dioptimalkan untuk kualitas jawaban', 'Main model, optimized for answer quality') },
+    { model: 'SUGI Llama 3.6 (Hybrid RAG)', role: t('Generasi jawaban utama, ringkasan memori sesi', 'Primary answer generation, session memory summary'), temp: '0.3', note: t('Model utama on-premise, kedaulatan data UU PDP', 'Main on-premise model, UU PDP data sovereignty') },
     { model: 'qwen2.5:1.5b', role: t('Penulisan ulang, evaluasi, ekstraksi tanaman, wawasan', 'Rewrite, eval, plant extraction, insights'), temp: '0.0-0.4', note: t('Model ringan, Bahasa Indonesia baik, inferensi cepat di CPU', 'Lightweight, good Bahasa Indonesia, fast CPU inference') },
     { model: 'mxbai-embed-large', role: t('Embedding untuk pencarian makna', 'Embeddings for semantic search'), temp: '-', note: t('768 dimensi, berjalan lokal via Ollama', '768 dimensions, runs locally via Ollama') },
   ]

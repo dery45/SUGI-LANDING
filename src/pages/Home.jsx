@@ -16,14 +16,16 @@ import { faqData } from '../data/faqData'
 
 const roadmap = {
   id: [
-    { period: '01 Mar–26 Mar 2026', label: 'Pre-Submission', title: 'Fase 1: Chatbot dan Front End Dashboard', desc: 'Chatbot: Fondasi Hybrid RAG (BM25 + Vector Search) dengan LLM lokal (on-premise). Dashboard: Manajemen siklus tanam (CRUD) dan visualisasi peta dasar.' },
-    { period: '01 Mei–04 Jun 2026', label: 'Tahap Essential', title: 'Fase 2: Offline Catch-up dan Back End Dashboard', desc: 'Chatbot: Bot Telegram live dengan fitur Offline Catch-up (zero data loss). Dashboard: Frontend & backend terhubung, 14 modul data, dan peta interaktif. Integrasi: Daily Insight Engine mulai mengirim insight harian ke dashboard.' },
-    { period: '19 Jun–26 Jul 2026', label: 'Tahap Practitioner', title: 'Fase 3: Integrasi dan Optimisasi', desc: 'Chatbot: AI Insight Engine otomatis untuk petani dan pemerintah dengan change detection. Dashboard: 15 tab analitik NLP (Knowledge Graph, Sentimen, Tren) dan arsitektur dual-database. Performa & Data: Optimasi 15 query paralel, cache 5 menit, kompresi data 80%, serta integrasi 15+ dataset ketahanan pangan nasional. Pengembangan PWA untuk mobile.' },
+    { period: '01 Mei–04 Jun 2026', label: 'Tahap Essential', title: 'Fase 1: Chatbot dan Front End Dashboard', desc: 'Chatbot: Fondasi Hybrid RAG (BM25 + Vector Search) dengan LLM lokal (on-premise). Dashboard: Manajemen siklus tanam (CRUD) dan visualisasi peta dasar.' },
+    { period: '19 Jun–26 Jul 2026', label: 'Tahap Practitioner', title: 'Fase 2: Offline Catch-up dan Back End Dashboard', desc: 'Chatbot: Bot Telegram live dengan fitur Offline Catch-up (zero data loss). Dashboard: Frontend & backend terhubung, 14 modul data, dan peta interaktif. Integrasi: Daily Insight Engine mulai mengirim insight harian ke dashboard.' },
+    { period: '19 Jun–26 Jul 2026', label: 'Tahap Capstone', title: 'Fase 3: Integrasi dan Optimisasi', desc: 'Chatbot: AI Insight Engine otomatis untuk petani dan pemerintah dengan change detection. Dashboard: 15 tab analitik NLP (Knowledge Graph, Sentimen, Tren) dan arsitektur dual-database. Performa: 15 query paralel, cache 5 menit, kompresi data 80%, 15+ dataset nasional. PWA mobile.' },
+    { period: 'Berikutnya', label: 'Fase 4: Validasi User', title: 'Fase 4: Validasi & Pilot Lapangan', desc: 'Bertemu Dinas Pertanian, observasi dan validasi dengan 10 user, uji coba pilot dengan 10 user. Pengembangan: native aplikasi, rekomendasi berbasis lokasi, siklus panen berkelanjutan, grading hasil panen.' },
   ],
   en: [
-    { period: '01 Mar–26 Mar 2026', label: 'Pre-Submission', title: 'Phase 1: Chatbot and Front End Dashboard', desc: 'Chatbot: Hybrid RAG foundation (BM25 + Vector Search) with local LLM (on-premise). Dashboard: Cultivation cycle management (CRUD) and basic map visualization.' },
-    { period: '01 May–04 Jun 2026', label: 'Essential Stage', title: 'Phase 2: Offline Catch-up and Back End Dashboard', desc: 'Chatbot: Live Telegram bot with Offline Catch-up feature (zero data loss). Dashboard: Frontend & backend connected, 14 data modules, and interactive map. Integration: Daily Insight Engine starts sending daily insights to dashboard.' },
-    { period: '19 Jun–26 Jul 2026', label: 'Practitioner Stage', title: 'Phase 3: Integration and Optimization', desc: 'Chatbot: Automated AI Insight Engine for farmers and government with change detection. Dashboard: 15 NLP analytics tabs (Knowledge Graph, Sentiment, Trends) and dual-database architecture. Performance & Data: 15 parallel query optimization, 5-min cache, 80% data compression, and 15+ national food security dataset integration. PWA mobile development.' },
+    { period: '01 May–04 Jun 2026', label: 'Essential Stage', title: 'Phase 1: Chatbot and Front End Dashboard', desc: 'Chatbot: Hybrid RAG foundation (BM25 + Vector Search) with local LLM (on-premise). Dashboard: Cultivation cycle management (CRUD) and basic map visualization.' },
+    { period: '19 Jun–26 Jul 2026', label: 'Practitioner Stage', title: 'Phase 2: Offline Catch-up and Back End Dashboard', desc: 'Chatbot: Live Telegram bot with Offline Catch-up (zero data loss). Dashboard: Frontend & backend connected, 14 data modules, interactive map. Daily Insight Engine sends daily insights.' },
+    { period: '19 Jun–26 Jul 2026', label: 'Capstone Stage', title: 'Phase 3: Integration and Optimization', desc: 'Chatbot: Automated AI Insight Engine with change detection. Dashboard: 15 NLP analytics tabs (Knowledge Graph, Sentiment, Trends), dual-database. 15 parallel queries, 5-min cache, 80% compression, 15+ national datasets. PWA mobile.' },
+    { period: 'Next', label: 'Phase 4: User Validation', title: 'Phase 4: Validation & Field Pilot', desc: 'Meet Agriculture Office, observe and validate with 10 users, pilot with 10 users. Next: native app, location-based recommendations, continuous harvest cycle, harvest grading.' },
   ],
 }
 
@@ -54,49 +56,49 @@ export default function Home() {
   }
 
   const solutionContent = isID ? {
-    title: 'SUGI Sebagai Solusi Terintegrasi',
-    subtitle: 'Bukan solusi parsial — SUGI menjawab ketiga lapisan kompleksitas secara simultan melalui satu ekosistem yang saling terhubung.',
+    title: 'SUGI Sebagai Pendamping Tani',
+    subtitle: 'Bukan sekedar asisten — SUGI adalah otak kedua bagi petani yang membaca lahan, cuaca, dan pola tanam untuk memangkas kerugian trial dan error.',
     points: [
-      { icon: '🌾', title: 'Pendamping Keputusan Kontekstual', desc: 'Chatbot AI hybrid RAG yang memahami konteks pertanian Indonesia. Memberikan rekomendasi tanam, analisis harga, peringatan dini cuaca, dan saran pengendalian hama secara real-time.' },
-      { icon: '🔄', title: 'Transfer Pengetahuan Lintas Generasi', desc: 'Knowledge base yang terus belajar dari setiap interaksi, menjembatani pengetahuan empiris petani senior dengan akses data digital untuk generasi muda.' },
-      { icon: '📊', title: 'Early Warning System Berbasis Data', desc: 'Data mikro lapangan dikonversi menjadi intelijen kebijakan pangan nasional. Mempercepat respons pemerintah dari skala minggu ke hari.' },
-      { icon: '🔒', title: 'Kedaulatan Data & Privasi', desc: 'Seluruh proses inferensi AI berjalan on-premise via Ollama. Data operasional petani, perusahaan, dan pemerintah tidak pernah dikirim ke layanan AI publik.' },
-      { icon: '🆓', title: 'Gratis untuk Petani', desc: 'Cross-subsidy model: chatbot Telegram gratis untuk petani sebagai kanal adopsi awal. Pendanaan dari layanan SaaS B2B dan Data-as-a-Service.' },
-      { icon: '📈', title: 'Data Flywheel', desc: 'Semakin banyak petani menggunakan SUGI, semakin kaya data lapangan, semakin akurat AI, semakin tinggi nilai analitik — siklus yang saling memperkuat.' },
+      { icon: '🧠', title: 'Otak Kedua Petani', desc: 'SUGI tidak hanya memberi informasi, tapi membaca situasi lahan, cuaca, dan pola tanam daerah petani — kerugian fase trial dan error yang mahal dapat berkurang signifikan.' },
+      { icon: '🔄', title: 'Transfer Pengetahuan Lintas Generasi', desc: '66% petani berusia >45 tahun. Knowledge base yang terus belajar menjembatani pengetahuan empiris senior dengan data digital untuk generasi muda.' },
+      { icon: '📊', title: 'Dari Minggu ke <24 Jam', desc: 'Data mikro lapangan menjadi intelijen kebijakan. Respons pemerintah terhadap anjloknya harga atau kelangkaan pupuk dari hitungan minggu menjadi hitungan jam.' },
+      { icon: '🔒', title: 'Kedaulatan Data & Privasi', desc: 'On-premise LLM, pengamanan berlapis, patuh UU PDP. Data tidak pernah ke cloud publik.' },
+      { icon: '🆓', title: 'Gratis Selamanya untuk Petani Kecil', desc: 'Didanai langganan dashboard: Kelompok Tani Rp300rb/bln, Perusahaan Rp1jt/bln, Pemerintah Rp1,5jt/bln.' },
+      { icon: '📈', title: 'Lebih dari Pencatatan — Mempelajari', desc: 'Data Flywheel + Persistent Memory: data yang dicatat petani dipakai untuk belajar dan memberi rekomendasi yang lebih baik.' },
     ],
   } : {
-    title: 'SUGI as an Integrated Solution',
-    subtitle: 'Not a partial solution — SUGI addresses all three layers of complexity simultaneously through one interconnected ecosystem.',
+    title: 'SUGI as Farming Companion',
+    subtitle: 'Not just an assistant — SUGI is a second brain reading land, weather, and planting patterns to cut trial-and-error losses.',
     points: [
-      { icon: '🌾', title: 'Contextual Decision Support', desc: 'Hybrid RAG AI chatbot that understands Indonesian agricultural context. Provides planting recommendations, price analysis, weather early warnings, and pest control advice in real-time.' },
-      { icon: '🔄', title: 'Cross-Generational Knowledge Transfer', desc: 'A knowledge base that continuously learns from every interaction, bridging senior farmers\' empirical knowledge with digital data access for younger generations.' },
-      { icon: '📊', title: 'Data-Driven Early Warning System', desc: 'Micro-level field data is converted into national food security intelligence. Accelerates government response from weeks to days.' },
-      { icon: '🔒', title: 'Data Sovereignty & Privacy', desc: 'All AI inference runs on-premise via Ollama. Farmer, company, and government operational data is never sent to public AI services.' },
-      { icon: '🆓', title: 'Free for Farmers', desc: 'Cross-subsidy model: free Telegram chatbot for farmers as an adoption channel. Funded through B2B SaaS and Data-as-a-Service.' },
-      { icon: '📈', title: 'Data Flywheel', desc: 'The more farmers use SUGI, the richer the field data, the more accurate the AI, the higher the analytics value — a self-reinforcing cycle.' },
+      { icon: '🧠', title: 'Second Brain', desc: 'SUGI reads land, weather, and local planting patterns — significantly reducing costly trial-and-error losses.' },
+      { icon: '🔄', title: 'Cross-Generational Knowledge Transfer', desc: '66% of farmers are >45 years old. A learning knowledge base bridges senior empirical knowledge with digital data for youth.' },
+      { icon: '📊', title: 'From Weeks to <24 Hours', desc: 'Field micro-data becomes policy intelligence. Government response to price drops or fertilizer scarcity drops from weeks to hours.' },
+      { icon: '🔒', title: 'Data Sovereignty & Privacy', desc: 'On-premise LLM, layered security, PDP Law compliant. Data never goes to public cloud.' },
+      { icon: '🆓', title: 'Free Forever for Smallholders', desc: 'Funded by dashboard subscriptions: Groups IDR 300K/mo, Companies IDR 1M/mo, Government IDR 1.5M/mo.' },
+      { icon: '📈', title: 'More Than Recording — Learning', desc: 'Data Flywheel + Persistent Memory: recorded farmer data is used to learn and give better recommendations.' },
     ],
   }
 
   const ecosystemContent = isID ? {
     title: 'Ekosistem SUGI',
-    subtitle: 'Empat komponen yang beroperasi sebagai satu AI Engine — menghubungkan interaksi lapangan petani menjadi intelijen kebijakan pangan nasional.',
+    subtitle: 'Smart Farming berasal dari Smart Decision — Chatbot, AI Copilot, dan Market Intelligence yang menghubungkan petani sampai pengambil kebijakan.',
     items: [
-      { title: 'SUGI AI', role: 'Asisten Cerdas Hybrid RAG', desc: 'Chatbot Telegram berbasis Hybrid RAG yang berjalan on-premise via Ollama. Menjawab pertanyaan budidaya, harga, cuaca, dan hama secara real-time dengan konteks pertanian Indonesia.', features: ['Scope Guard & Query Rewriting', 'Cross-Encoder Reranker', 'Long-Term Memory', '100% Gratis untuk Petani'] },
-      { title: 'SUGIDash', role: 'Dashboard Analitik & Intelijen Pangan', desc: 'Platform dashboard berbasis peran untuk Petani, Manajemen, dan Pemerintah dengan 15+ dataset ketahanan pangan nasional, lifecycle tracker, dan KPI real-time.', features: ['3 Role-Based Dashboard', '15+ Dataset Bapanas/BPS', 'Lifecycle Management', 'Peta Interaktif Indonesia'] },
-      { title: 'SUGI PWA', role: 'Aplikasi Lapangan Mobile-First', desc: 'Aplikasi mobile offline-first untuk pencatatan aktivitas budidaya di area sinyal terbatas. Terintegrasi langsung dengan SUGI AI dan SUGIDash.', features: ['Offline-First', 'Pencatatan Lapangan', 'Sinkronisasi Otomatis', 'Minimum Typing UX'] },
-      { title: 'Insight Engine', role: 'Mesin Wawasan Otomatis', desc: 'Mengagregasi interaksi mikro dari ketiga komponen menjadi wawasan makro terstruktur. Mendukung Early Warning System dan mitigasi risiko kebijakan.', features: ['Daily Insights (12 jam)', 'Government Insights', 'Farmer Insights (10 jenis)', 'Policy Recommendations'] },
+      { title: 'Telegram Chatbot', role: 'Menjawab Kebutuhan Secara Cepat', desc: 'Chatbot AI yang menjawab kebutuhan petani, pemilik lahan, dan pemerintah secara cepat — budidaya, harga, cuaca, hama dalam Bahasa Indonesia.', features: ['100% Gratis untuk Petani Kecil', 'Respons Instan', 'On-Premise', 'Offline Catch-up'] },
+      { title: 'SUGI AI Copilot', role: 'Otak Kedua Petani', desc: 'AI Copilot yang menghubungkan petani sampai pengambil kebijakan. Data Flywheel + Persistent Memory: data yang dicatat dipakai untuk belajar dan rekomendasi lebih baik.', features: ['Data Flywheel', 'Persistent Memory', 'Hybrid RAG', 'Rekomendasi Kontekstual'] },
+      { title: 'SUGIDash Government', role: 'Dashboard Ketahanan Pangan', desc: 'AI dashboard untuk memantau ketahanan pangan dan kebijakan berbasis data. Untuk Bapanas, Kementan, Kemendag, Bank Indonesia, dan koperasi pertanian.', features: ['15+ Dataset Bapanas/BPS', 'Policy Recommendation', 'Chatbot Insight', 'Mulai Rp1,5jt/bln'] },
+      { title: 'Market Intelligence', role: 'Insight Pasar & Kebijakan', desc: 'Insight pasar, kebijakan, dan percakapan petani berbasis SUGI AI. Telinga pemerintah: tren dan insight real-time untuk evaluasi.', features: ['10 Market Insights', '15 Tab NLP', 'Target 15% Hemat Biaya', 'Respons <24 Jam'] },
     ],
-    flow: 'Keempat komponen tidak beroperasi secara terpisah — mereka terhubung dalam satu pipeline data yang mengonversi interaksi lapangan petani menjadi intelijen kebijakan pangan nasional secara berkelanjutan.',
+    flow: 'Alur SUGI: Petani Mendata (Mobile Apps) → Kelompok Tani → Pemerintah Mendengar (Dashboard) → Membuat Kebijakan → Memberi Market Insight & Chatbot ke Petani. Berawal dari Wonoboyo, Jogonalan, Klaten (2024) bersama UNY.',
   } : {
     title: 'SUGI Ecosystem',
-    subtitle: 'Four components operating as one AI Engine — connecting on-field farmer interactions into national food security intelligence.',
+    subtitle: 'Smart Farming comes from Smart Decision — Chatbot, AI Copilot, and Market Intelligence connecting farmers to policymakers.',
     items: [
-      { title: 'SUGI AI', role: 'Hybrid RAG Intelligent Assistant', desc: 'Telegram chatbot powered by Hybrid RAG running on-premise via Ollama. Answers cultivation, pricing, weather, and pest queries in real-time with Indonesian agricultural context.', features: ['Scope Guard & Query Rewriting', 'Cross-Encoder Reranker', 'Long-Term Memory', '100% Free for Farmers'] },
-      { title: 'SUGIDash', role: 'Analytics & Food Intelligence Dashboard', desc: 'Role-based dashboard platform for Farmers, Management, and Government with 15+ national food security datasets, lifecycle tracker, and real-time KPIs.', features: ['3 Role-Based Dashboards', '15+ Bapanas/BPS Datasets', 'Lifecycle Management', 'Interactive Indonesia Map'] },
-      { title: 'SUGI PWA', role: 'Mobile-First Field Application', desc: 'Offline-first mobile app for recording cultivation activities in limited signal areas. Directly integrated with SUGI AI and SUGIDash.', features: ['Offline-First', 'Field Recording', 'Auto Sync', 'Minimum Typing UX'] },
-      { title: 'Insight Engine', role: 'Automated Intelligence Engine', desc: 'Aggregates micro interactions from all three components into structured macro insights. Supports Early Warning System and policy risk mitigation.', features: ['Daily Insights (12h)', 'Government Insights', 'Farmer Insights (10 types)', 'Policy Recommendations'] },
+      { title: 'Telegram Chatbot', role: 'Fast Answers', desc: 'AI chatbot answering farmers, landowners, and government quickly — cultivation, prices, weather, pests in Indonesian.', features: ['100% Free for Smallholders', 'Instant Response', 'On-Premise', 'Offline Catch-up'] },
+      { title: 'SUGI AI Copilot', role: 'Farmers’ Second Brain', desc: 'AI Copilot connecting farmers to policymakers. Data Flywheel + Persistent Memory: recorded data is used to learn and improve recommendations.', features: ['Data Flywheel', 'Persistent Memory', 'Hybrid RAG', 'Contextual Recommendations'] },
+      { title: 'SUGIDash Government', role: 'Food Security Dashboard', desc: 'AI dashboard for food security and data-driven policy. For Bapanas, Ministries, Bank Indonesia, and cooperatives.', features: ['15+ Bapanas/BPS Datasets', 'Policy Recommendation', 'Chatbot Insight', 'From IDR 1.5M/mo'] },
+      { title: 'Market Intelligence', role: 'Market & Policy Insights', desc: 'Market, policy, and conversation insights powered by SUGI AI. Government ears: real-time trends and insights for evaluation.', features: ['10 Market Insights', '15 NLP Tabs', '15% Cost Saving Target', '<24 Hr Response'] },
     ],
-    flow: 'All four components do not operate in isolation — they are connected in one data pipeline that converts farmer field interactions into national food security intelligence on an ongoing basis.',
+    flow: 'SUGI loop: Farmers Record (Mobile Apps) → Groups → Government Listens (Dashboard) → Creates Policy → Gives Market Insight & Chatbot back to Farmers. Rooted in Wonoboyo, Jogonalan, Klaten (2024) with UNY.',
   }
 
   const currentFaqTab = faqData.find(f => f.id === faqTab)
