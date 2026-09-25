@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
 import SEOHead from '../components/ui/SEOHead'
 import { team } from '../data/teamData'
@@ -43,6 +43,15 @@ function DeckImg({ sources, alt = '', className = '' }) {
 
 const VALIDATION_SOURCES = ['/image/validation.png', '/image/dashboard-preview/farmer-dashboard.png', '/image/dashboard-preview/government-dashboard.png']
 
+/* Auto-slideshow frames (1 detik per gambar) */
+const SLIDES = [
+  { src: '/image/dashboard-preview/farmer-market-Intelligence.png', pos: 'object-top', id: 'Dashboard Petani — Market Intelligence', en: 'Farmer Dashboard — Market Intelligence' },
+  { src: '/image/dashboard-preview/goverment-policy-recomendation.png', pos: 'object-top', id: 'Dashboard Pemerintah — Rekomendasi Kebijakan', en: 'Government Dashboard — Policy Recommendations' },
+  { src: '/image/dashboard-preview/government-chatbot-insight.png', pos: 'object-top', id: 'Chatbot Insight — Analitik Percakapan', en: 'Chatbot Insight — Conversation Analytics' },
+  { src: '/image/dashboard-preview/farmer-lifecycle-management.png', pos: 'object-top', id: 'Lifecycle Management Petani', en: 'Farmer Lifecycle Management' },
+  { src: '/image/dashboard-preview/farmer-pwa.png', pos: 'object-contain', id: 'SUGI Apps — PWA Lapangan', en: 'SUGI Apps — Field PWA' },
+]
+
 function Label({ children }) {
   return (
     <div className="flex items-center gap-2.5 shrink-0">
@@ -75,6 +84,13 @@ export default function OnePage() {
   const t = (id, en) => (isID ? id : en)
   const scale = useFitScale()
   const [lightbox, setLightbox] = useState(null)
+  const [pitchOpen, setPitchOpen] = useState(false)
+  const [slide, setSlide] = useState(0)
+  const paused = useRef(false)
+  useEffect(() => {
+    const id = setInterval(() => { if (!paused.current) setSlide((s) => (s + 1) % SLIDES.length) }, 3000)
+    return () => clearInterval(id)
+  }, [])
 
   useEffect(() => {
     const prev = document.body.style.overflow
@@ -110,9 +126,11 @@ export default function OnePage() {
               </div>
               <div className="flex-1" />
               <div className="flex items-center gap-2.5 shrink-0">
+                <button onClick={() => setPitchOpen(true)} className="rounded-xl bg-[#FF0000] px-4 py-2.5 text-[15px] font-extrabold text-white hover:brightness-110 transition">▶ SUGI Pitch</button>
                 <a href="https://dashboard.sugiecosystem.cloud/login" target="_blank" rel="noopener noreferrer" className="rounded-xl bg-primary px-4 py-2.5 text-[15px] font-extrabold text-shade-600 hover:brightness-110 transition">SUGI Dash ↗</a>
                 <a href="https://drive.google.com/file/d/19CNeUh6pOploMABiSzxTda_ht_2hQB1g/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-white/25 px-4 py-2.5 text-[15px] font-bold text-white hover:bg-white/10 transition">SUGI Deck ↗</a>
                 <a href="https://sugiecosystem.cloud/" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-white/25 px-4 py-2.5 text-[15px] font-bold text-white hover:bg-white/10 transition">Landing Page ↗</a>
+                <a href="https://drive.google.com/file/d/1adLnvFMmy6x31wdw3NhKJmxdhqn8sL6i/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-white/25 px-4 py-2.5 text-[15px] font-bold text-white hover:bg-white/10 transition">Lampiran ↗</a>
               </div>
               <div className="text-right">
                 <p className="text-[22px] font-bold leading-none">@sugi_demo_llmbot</p>
@@ -167,7 +185,7 @@ export default function OnePage() {
                 <div className="grid grid-cols-3 gap-3 shrink-0">
                   <div className="rounded-xl bg-primary/10 border border-primary/30 p-3 text-center">
                     <div className="text-[38px] font-extrabold text-primary leading-none">49,41%</div>
-                    <div className="text-[16px] text-gray-300 leading-tight mt-1.5">{t('RT miskin dari pertanian', 'Poor HH from farming')}</div>
+                    <div className="text-[16px] text-gray-300 leading-tight mt-1.5">{t('Kemiskinan Rumah Tangga dari sektor pertanian', 'Poor households from agriculture')}</div>
                   </div>
                   <div className="rounded-xl bg-white/5 border border-white/10 p-3 text-center">
                     <div className="text-[38px] font-extrabold leading-none">66%</div>
@@ -189,7 +207,7 @@ export default function OnePage() {
                 <div className="grid grid-cols-4 gap-2.5 shrink-0">
                   {[
                     ['🧠', t('Pendamping', 'Companion'), t('Baca lahan & cuaca', 'Reads land & weather')],
-                    ['💬', 'Chatbot', t('Instan', 'Instant')],
+                    ['💬', t('Mendengar', 'Listening'), t('Real Time dari Lapangan', 'Real-time from the field')],
                     ['🔁', 'Flywheel', t('Belajar terus', 'Always learns')],
                     ['🔒', 'UU PDP', t('Berdaulat', 'Sovereign')],
                   ].map(([icon, title, desc]) => (
@@ -210,7 +228,7 @@ export default function OnePage() {
                     <div className="grid grid-cols-2 gap-2">
                       <div className="rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-[18px] text-gray-300 text-center leading-snug"><span className="text-primary font-extrabold">1.</span> {t('15 Dataset Bapanas', '15 Bapanas Datasets')}</div>
                       <div className="rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-[18px] text-gray-300 text-center leading-snug"><span className="text-primary font-extrabold">2.</span> {t('10.000 Tumbuhan + Cuaca', '10,000 Plants + Weather')}</div>
-                      <div className="rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-[18px] text-gray-300 text-center leading-snug"><span className="text-primary font-extrabold">3.</span> {t('Jurnal & Penelitian', 'Journals & Research')}</div>
+                      <div className="rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-[18px] text-gray-300 text-center leading-snug"><span className="text-primary font-extrabold">3.</span> {t('100+ Jurnal dan Penelitian', '100+ Journals & Research')}</div>
                       <div className="rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-[18px] text-gray-300 text-center leading-snug"><span className="text-primary font-extrabold">4.</span> {t('Data Petani', 'Farmer Data')}</div>
                     </div>
                     <div className="self-center text-primary text-[22px] font-extrabold leading-none">↓</div>
@@ -230,8 +248,35 @@ export default function OnePage() {
                   </div>
                 </div>
                 <div className="flex-1 min-h-[150px] grid grid-cols-2 gap-3">
-                  <Shot sources={['/image/dashboard-preview/farmer-market-Intelligence.png', '/image/dashboard-preview/government-dashboard.png']} pos="object-top" caption={t('Dashboard Petani — Market Intelligence', 'Farmer Dashboard — Market Intelligence')} />
-                  <Shot sources={['/image/telegram-chat-preview.png', '/image/sugi-telegram-chatbot-logo.png']} caption={t('Telegram Chatbot — gratis, instan', 'Telegram Chatbot — free, instant')} />
+                  <div
+                    className="cursor-zoom-in group"
+                    onClick={() => setLightbox(SLIDES[slide].src)}
+                    onMouseEnter={() => { paused.current = true }}
+                    onMouseLeave={() => { paused.current = false }}
+                    title={t('Klik untuk memperbesar', 'Click to enlarge')}
+                  >
+                    <div className="relative rounded-xl overflow-hidden border border-white/10 bg-shade-500 w-full h-full">
+                      {SLIDES.map((s, i) => (
+                        <img
+                          key={s.src}
+                          src={s.src}
+                          alt={t(s.id, s.en)}
+                          draggable={false}
+                          className={`absolute inset-0 w-full h-full ${s.pos} transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
+                        />
+                      ))}
+                      <div className="absolute inset-x-0 bottom-0 px-3.5 py-2 bg-gradient-to-t from-black/90 to-transparent flex items-center gap-3">
+                        <p className="text-[15px] font-bold leading-tight flex-1 truncate">{t(SLIDES[slide].id, SLIDES[slide].en)}</p>
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          {SLIDES.map((s, i) => (
+                            <span key={s.src} className={`w-2 h-2 rounded-full ${i === slide ? 'bg-primary' : 'bg-white/30'}`} />
+                          ))}
+                        </div>
+                      </div>
+                      <span className="absolute top-2.5 right-2.5 rounded-lg bg-black/65 px-3 py-1.5 text-[13px] font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity">⛶ Full</span>
+                    </div>
+                  </div>
+                  <Shot sources={['/image/telegram-chat-preview.png', '/image/sugi-telegram-chatbot-logo.png']} onExpand={() => setLightbox('/image/telegram-chat-preview.png')} caption={t('Telegram Chatbot — gratis, instan', 'Telegram Chatbot — free, instant')} />
                 </div>
                 <div className="shrink-0">
                   <Label>{t('Dampak', 'Impact')}</Label>
@@ -241,8 +286,8 @@ export default function OnePage() {
                     <p className="text-[22px] font-bold text-shade-600 leading-tight">{t('Hemat pupuk & pestisida', 'Fertilizer savings')}</p>
                   </div>
                   <div className="rounded-xl bg-white px-6 py-4 flex flex-col items-center justify-center text-center gap-1">
-                    <span className="text-[72px] font-extrabold text-accent leading-none">&lt;24J</span>
-                    <p className="text-[22px] font-bold text-shade-600 leading-tight">{t('Respons minggu → jam', 'Weeks → hours')}</p>
+                    <span className="text-[72px] font-extrabold text-accent leading-none">&lt;24 Jam</span>
+                    <p className="text-[22px] font-bold text-shade-600 leading-tight">{t('Waktu respon lama → hitungan jam', 'Long response time → hours')}</p>
                   </div>
                   </div>
                 </div>
@@ -277,6 +322,28 @@ export default function OnePage() {
             <span className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-lg bg-black/65 px-4 py-2 text-[14px] font-semibold text-gray-300">
               {t('Klik di luar gambar atau tekan ESC untuk menutup', 'Click outside or press ESC to close')}
             </span>
+          </div>
+        )}
+        {pitchOpen && (
+          <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-8">
+            <div className="w-[86vw] max-w-[1500px]">
+              <div className="flex items-center justify-between mb-3">
+                <p className="text-[18px] font-extrabold text-white">▶ SUGI Pitch</p>
+                <button
+                  onClick={() => setPitchOpen(false)}
+                  className="rounded-xl bg-white/10 hover:bg-white/25 border border-white/30 px-5 py-2.5 text-[16px] font-bold text-white transition"
+                >
+                  ✕ {t('Tutup', 'Close')}
+                </button>
+              </div>
+              <iframe
+                src="https://www.youtube.com/embed/hi7bN0AcADU?autoplay=1&loop=1&playlist=hi7bN0AcADU&rel=0"
+                title="SUGI Pitch"
+                className="w-full aspect-video rounded-2xl shadow-2xl border border-white/20"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
           </div>
         )}
       </div>
